@@ -49,7 +49,19 @@ class SignInScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () async {
+                String message = await context
+                    .read<SignInViewModel>()
+                    .signIn(usernameController.text, passwordController.text);
+
+                if (message.isEmpty) {
+                  Navigator.pushReplacementNamed(context, 'home_screen');
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(message),
+                  ));
+                }
+              },
               icon: const Icon(Icons.login),
               label: const Text('Sign In'),
             ),
