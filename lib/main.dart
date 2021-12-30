@@ -3,16 +3,16 @@ import 'package:flutter_test_project/view/home_screen.dart';
 import 'package:flutter_test_project/view/sign_in_screen.dart';
 import 'package:flutter_test_project/view/sign_up_screen.dart';
 import 'package:flutter_test_project/view_model/sign_in_view_model.dart';
+import 'package:flutter_test_project/view_model/sign_up_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<SignInViewModel>(create: (_) => SignInViewModel()),
-
-
+      ChangeNotifierProvider<SignUpViewModel>(create: (_) => SignUpViewModel()),
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SignInScreen(),
         'sign_in': (context) => SignInScreen(),
-        'sign_up': (context) => SignUpScreen(),
+        'sign_up': (context) =>  SignUpScreen(),
         'home': (context) => const HomeScreen(),
       },
     );

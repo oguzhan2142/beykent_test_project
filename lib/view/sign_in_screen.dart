@@ -56,9 +56,7 @@ class SignInScreen extends StatelessWidget {
             const SizedBox(height: 40),
             TextButton(
               onPressed: () {
-                String res = context.read<SignInViewModel>().helloWorld();
-                print(res);
-                // Navigator.pushNamed(context, 'sign_up');
+                Navigator.pushNamed(context, 'sign_up');
               },
               child: const Text('If you dont have a account Sign Up'),
             ),
