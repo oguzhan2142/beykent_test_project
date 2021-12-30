@@ -3,8 +3,12 @@ import 'package:flutter_test_project/model/User.dart';
 import 'package:flutter_test_project/repositories/repository.dart';
 
 class SignInViewModel extends ChangeNotifier {
+  final Repository repository;
+
+  SignInViewModel(this.repository);
+
   Future<String> signIn(String username, String password) async {
-    User? user = await Repository.getUserFromPref(username);
+    User? user = await repository.getUserFromPref(username);
 
     if (user == null) {
       return "User not found";

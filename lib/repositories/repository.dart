@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Repository {
   static const String _users = 'users';
 
-  static Future<User?> getUserFromPref(String username) async {
+   Future<User?> getUserFromPref(String username) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     List<String>? userList = prefs.getStringList(_users);
@@ -22,7 +22,7 @@ class Repository {
     return null;
   }
 
-  static Future<bool> isUsernameExist(String username) async {
+   Future<bool> isUsernameExist(String username) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String>? existinguserList = prefs.getStringList(_users);
     if (existinguserList == null) {
@@ -37,7 +37,7 @@ class Repository {
     return false;
   }
 
-  static Future<void> saveUserToPref(User user) async {
+   Future<void> saveUserToPref(User user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String>? existinguserList = prefs.getStringList(_users);
 

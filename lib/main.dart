@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/repositories/repository.dart';
 import 'package:flutter_test_project/view/home_screen.dart';
 import 'package:flutter_test_project/view/sign_in_screen.dart';
 import 'package:flutter_test_project/view/sign_up_screen.dart';
@@ -7,10 +8,16 @@ import 'package:flutter_test_project/view_model/sign_up_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  final Repository repository = Repository();
+
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider<SignInViewModel>(create: (_) => SignInViewModel()),
-      ChangeNotifierProvider<SignUpViewModel>(create: (_) => SignUpViewModel()),
+      ChangeNotifierProvider<SignInViewModel>(
+        create: (_) => SignInViewModel(repository),
+      ),
+      ChangeNotifierProvider<SignUpViewModel>(
+        create: (_) => SignUpViewModel(repository),
+      ),
     ],
     child: const MyApp(),
   ));
