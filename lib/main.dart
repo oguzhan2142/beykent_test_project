@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/home_screen.dart';
-import 'package:flutter_test_project/sign_in_screen.dart';
-import 'package:flutter_test_project/sign_up_screen.dart';
+import 'package:flutter_test_project/view/home_screen.dart';
+import 'package:flutter_test_project/view/sign_in_screen.dart';
+import 'package:flutter_test_project/view/sign_up_screen.dart';
+import 'package:flutter_test_project/view_model/sign_in_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<SignInViewModel>(create: (_) => SignInViewModel()),
+
+
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,14 +26,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-
       routes: {
         '/': (context) => SignInScreen(),
-        'sign_in': (context) =>  SignInScreen(),
-        'sign_up': (context) =>  SignUpScreen(),
+        'sign_in': (context) => SignInScreen(),
+        'sign_up': (context) => SignUpScreen(),
         'home': (context) => const HomeScreen(),
       },
-
     );
   }
 }

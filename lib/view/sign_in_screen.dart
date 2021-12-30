@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/view_model/sign_in_view_model.dart';
+import 'package:provider/src/provider.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({Key? key}) : super(key: key);
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  bool isUserExist() {
+    return false;
+  }
+
+  void signIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +48,17 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
+            ElevatedButton.icon(
+              onPressed: () {},
+              icon: const Icon(Icons.login),
+              label: const Text('Sign In'),
+            ),
+            const SizedBox(height: 40),
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'sign_up');
+                String res = context.read<SignInViewModel>().helloWorld();
+                print(res);
+                // Navigator.pushNamed(context, 'sign_up');
               },
               child: const Text('If you dont have a account Sign Up'),
             ),
