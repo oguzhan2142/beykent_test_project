@@ -8,7 +8,7 @@ class SignUpViewModel extends ChangeNotifier {
   SignUpViewModel(this.repository);
 
   Future<String> signUp(String username, String password) async {
-    User? user = _createUser(username, password);
+    User? user = createUser(username, password);
 
     if (user == null) {
       return "Invalid username or password";
@@ -24,7 +24,7 @@ class SignUpViewModel extends ChangeNotifier {
     return 'Sign up successful';
   }
 
-  User? _createUser(String username, String password) {
+  User? createUser(String username, String password) {
     User user = User(username: username, password: password);
     if (user.username.isEmpty || user.password.isEmpty) {
       return null;
