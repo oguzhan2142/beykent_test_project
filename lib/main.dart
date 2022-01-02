@@ -3,6 +3,7 @@ import 'package:flutter_test_project/repositories/repository.dart';
 import 'package:flutter_test_project/view/home_screen.dart';
 import 'package:flutter_test_project/view/sign_in_screen.dart';
 import 'package:flutter_test_project/view/sign_up_screen.dart';
+import 'package:flutter_test_project/view_model/home_view_model.dart';
 import 'package:flutter_test_project/view_model/sign_in_view_model.dart';
 import 'package:flutter_test_project/view_model/sign_up_view_model.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,9 @@ void main() {
       ),
       ChangeNotifierProvider<SignUpViewModel>(
         create: (_) => SignUpViewModel(repository),
+      ),
+      ChangeNotifierProvider<HomeViewModel>(
+        create: (_) => HomeViewModel(repository),
       ),
     ],
     child: const MyApp(),

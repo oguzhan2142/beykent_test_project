@@ -1,10 +1,30 @@
+import 'dart:convert';
+
 import 'package:flutter_test_project/model/User.dart';
+import 'package:flutter_test_project/model/todo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Repository {
-  static const String _users = 'users';
+  final String _users = 'users';
+  final String _todos = 'todos';
 
-   Future<User?> getUserFromPref(String username) async {
+  Future<List<Todo>?> getAllTodos() async {
+    final prefs = await SharedPreferences.getInstance();
+    final todos = prefs.getStringList(_todos);
+
+    return todos?.map((todo) => Todo.fromJson(json.decode(todo))).toList();
+  }
+
+
+  Future<void> addTodo(Todo todo)async{
+    final prefs = await SharedPreferences.getInstance();
+    final todos = prefs.getStringList(_todos) ?? [];
+    todos.add(json.encode(todo));
+    prefs.setStringList(_todos, todos);
+
+  }
+
+  Future<User?> getUserFromPref(String username) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     List<String>? userList = prefs.getStringList(_users);
@@ -22,7 +42,7 @@ class Repository {
     return null;
   }
 
-   Future<bool> isUsernameExist(String username) async {
+  Future<bool> isUsernameExist(String username) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String>? existinguserList = prefs.getStringList(_users);
     if (existinguserList == null) {
@@ -37,7 +57,7 @@ class Repository {
     return false;
   }
 
-   Future<void> saveUserToPref(User user) async {
+  Future<void> saveUserToPref(User user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String>? existinguserList = prefs.getStringList(_users);
 

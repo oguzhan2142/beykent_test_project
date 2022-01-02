@@ -30,6 +30,7 @@ class SignUpScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             TextField(
+                 key: Key('password1'),
               controller: passwordController,
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
@@ -43,6 +44,7 @@ class SignUpScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             TextField(
+              key: Key('password2'),
               controller: rePasswordController,
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,

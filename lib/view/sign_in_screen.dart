@@ -25,6 +25,7 @@ class SignInScreen extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+
               controller: usernameController,
               decoration: InputDecoration(
                 labelText: 'Username',
@@ -70,7 +71,7 @@ class SignInScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, 'sign_up');
               },
-              child: const Text('If you dont have a account Sign Up'),
+              child: const Text('If you dont have an account Sign Up'),
             ),
           ],
         ),

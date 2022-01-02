@@ -15,6 +15,7 @@ class SignInViewModel extends ChangeNotifier {
     }
 
     if (password == user.password) {
+      User.instance = user;
       return "";
     } else {
       return "Wrong password";
