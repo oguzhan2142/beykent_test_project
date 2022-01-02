@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
         onPressed: () =>
             context.read<HomeViewModel>().onFloatingActionBtnPressed(context),
       ),

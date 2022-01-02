@@ -13,21 +13,6 @@ class Todo {
     required this.isDone,
   });
 
-
-  Todo copyWith({
-    int? id,
-    String? title,
-    DateTime? createdAt,
-    bool? isDone,
-  }) {
-    return Todo(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      createdAt: createdAt ?? this.createdAt,
-      isDone: isDone ?? this.isDone,
-    );
-  }
-
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -53,24 +38,5 @@ class Todo {
   @override
   String toString() {
     return 'Todo(id: $id, title: $title, createdAt: $createdAt, isDone: $isDone)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is Todo &&
-      other.id == id &&
-      other.title == title &&
-      other.createdAt == createdAt &&
-      other.isDone == isDone;
-  }
-
-  @override
-  int get hashCode {
-    return id.hashCode ^
-      title.hashCode ^
-      createdAt.hashCode ^
-      isDone.hashCode;
   }
 }
