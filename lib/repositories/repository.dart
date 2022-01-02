@@ -12,16 +12,14 @@ class Repository {
     final prefs = await SharedPreferences.getInstance();
     final todos = prefs.getStringList(_todos);
 
-    return todos?.map((todo) => Todo.fromJson(json.decode(todo))).toList();
+    return todos?.map((todo) => Todo.fromJson(todo)).toList();
   }
 
-
-  Future<void> addTodo(Todo todo)async{
+  Future<void> addTodo(Todo todo) async {
     final prefs = await SharedPreferences.getInstance();
     final todos = prefs.getStringList(_todos) ?? [];
-    todos.add(json.encode(todo));
+    todos.add(todo.toJson());
     prefs.setStringList(_todos, todos);
-
   }
 
   Future<User?> getUserFromPref(String username) async {
@@ -67,5 +65,22 @@ class Repository {
       existinguserList.add(user.toJson());
       prefs.setStringList(_users, existinguserList);
     }
+  }
+
+  Future<void> updateTodo(Todo todo) async {
+    final prefs = await SharedPreferences.getInstance();
+    final todos = prefs.getStringList(_todos) ?? [];
+
+    todos.removeWhere((element) => element.contains(todo.id.toString()));
+    todos.add(todo.toJson());
+
+    // List<Todo> models = [];
+    // for (var map in todos) {
+    //   final model = Todo.fromJson(map);
+    //   models.add(model);
+    // }
+    // models.removeWhere((todoItem) => todoItem.id == todo.id);
+
+    prefs.setStringList(_todos, todos);
   }
 }

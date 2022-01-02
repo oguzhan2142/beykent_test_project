@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/view_model/sign_in_view_model.dart';
 import 'package:provider/src/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -16,6 +17,8 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // SharedPreferences.getInstance().then((value) => value.remove('todos'));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign In Screen'),
@@ -25,7 +28,6 @@ class SignInScreen extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-
               controller: usernameController,
               decoration: InputDecoration(
                 labelText: 'Username',

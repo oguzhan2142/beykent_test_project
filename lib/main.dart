@@ -7,8 +7,10 @@ import 'package:flutter_test_project/view_model/home_view_model.dart';
 import 'package:flutter_test_project/view_model/sign_in_view_model.dart';
 import 'package:flutter_test_project/view_model/sign_up_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  
   final Repository repository = Repository();
 
   runApp(MultiProvider(
