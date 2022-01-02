@@ -1,16 +1,13 @@
-# flutter_test_project
+# Beykent University Flutter Unit Test Project
 
-A new Flutter project.
+This project is a simple todo application made for unit testing.
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Install Flutter to your computer
+- Download project
+- Open it with Android Studio or Visual Studio Code
+- Execute `flutter pub get` command from your console to get packages
+- Run project
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
