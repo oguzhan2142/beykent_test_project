@@ -17,7 +17,7 @@ void main() {
   test('should isLoading should be false when [getAllTodos] exuceting finished',
       () async {
     // arrange
-    when(mockRepository.getAllTodos()).thenAnswer((_) => Future.value([]));
+    when(mockRepository.getAllTodos()).thenAnswer((_) => Future.value(<Todo>[]));
 
     // act
     await homeViewModel.getAllTodos();
@@ -57,39 +57,8 @@ void main() {
     await homeViewModel.getAllTodos();
 
     // assert
-    expect(homeViewModel.todos.length, []);
+    expect(homeViewModel.todos, []);
   });
 
-  test('should [onTodoChecked] change todo isDone value with oppsosite', () {
-    // arrange
-    const isDoneValue = false;
-    Todo model = Todo(
-      id: 1,
-      title: 'title',
-      createdAt: DateTime.now(),
-      isDone: isDoneValue,
-    );
-
-    // act
-    homeViewModel.onTodoChecked(model, isDoneValue);
-
-    // assert
-    expect(model, !isDoneValue);
-  });
-
-  test('should execute getAllTodos inside [onTodoChecked]', () async {
-    // arrange
-    Todo todo = Todo(
-      id: 1,
-      title: 'title',
-      createdAt: DateTime.now(),
-      isDone: true,
-    );
-
-    // act
-    homeViewModel.onTodoChecked(todo, false);
-
-    // assert
-    verify(homeViewModel.getAllTodos());
-  });
+  
 }

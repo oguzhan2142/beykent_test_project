@@ -17,7 +17,7 @@ void main() {
     Map<String, dynamic> actual = todo.toMap();
 
     // assert
-    expect(actual['id'], isA<int>());
+    expect(actual['createdAt'], isA<int>());
   });
 
   test('should toMap return valid values', () {

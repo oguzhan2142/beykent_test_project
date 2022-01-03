@@ -11,9 +11,7 @@ class HomeViewModel extends ChangeNotifier {
 
   bool isLoading = true;
 
-  HomeViewModel(this.repository) {
-    getAllTodos();
-  }
+  HomeViewModel(this.repository);
 
   void onFloatingActionBtnPressed(BuildContext context) async {
     Todo? todo = await showDialog<Todo>(
@@ -34,6 +32,8 @@ class HomeViewModel extends ChangeNotifier {
     List<Todo>? todos = await repository.getAllTodos();
     if (todos == null) {
       this.todos = [];
+      isLoading = false;
+      notifyListeners();
       return;
     }
     todos.sort((a, b) => b.createdAt.compareTo(a.createdAt));

@@ -4,7 +4,8 @@
 
 import 'dart:async' as _i3;
 
-import 'package:flutter_test_project/model/User.dart' as _i4;
+import 'package:flutter_test_project/model/todo.dart' as _i4;
+import 'package:flutter_test_project/model/User.dart' as _i5;
 import 'package:flutter_test_project/repositories/repository.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -26,16 +27,31 @@ class MockRepository extends _i1.Mock implements _i2.Repository {
   }
 
   @override
-  _i3.Future<_i4.User?> getUserFromPref(String? username) =>
+  _i3.Future<List<_i4.Todo>?> getAllTodos() =>
+      (super.noSuchMethod(Invocation.method(#getAllTodos, []),
+              returnValue: Future<List<_i4.Todo>?>.value())
+          as _i3.Future<List<_i4.Todo>?>);
+  @override
+  _i3.Future<void> addTodo(_i4.Todo? todo) =>
+      (super.noSuchMethod(Invocation.method(#addTodo, [todo]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<_i5.User?> getUserFromPref(String? username) =>
       (super.noSuchMethod(Invocation.method(#getUserFromPref, [username]),
-          returnValue: Future<_i4.User?>.value()) as _i3.Future<_i4.User?>);
+          returnValue: Future<_i5.User?>.value()) as _i3.Future<_i5.User?>);
   @override
   _i3.Future<bool> isUsernameExist(String? username) =>
       (super.noSuchMethod(Invocation.method(#isUsernameExist, [username]),
           returnValue: Future<bool>.value(false)) as _i3.Future<bool>);
   @override
-  _i3.Future<void> saveUserToPref(_i4.User? user) =>
+  _i3.Future<void> saveUserToPref(_i5.User? user) =>
       (super.noSuchMethod(Invocation.method(#saveUserToPref, [user]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+  @override
+  _i3.Future<void> updateTodo(_i4.Todo? todo) =>
+      (super.noSuchMethod(Invocation.method(#updateTodo, [todo]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
 }
